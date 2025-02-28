@@ -1,0 +1,12 @@
+Include
+Lib
+Output
+Source
+Scripts
+share
+
+
+__pycache__/
+*.py[cod]
+.env
+.venv/
