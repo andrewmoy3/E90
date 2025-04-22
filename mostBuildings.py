@@ -7,7 +7,6 @@ def mostBuildings(costs, budget):
 
     # Define problem object
     prob = pl.LpProblem("Problem", pl.LpMaximize)
-    # prob = pl.LpProblem("Problem", pl.LpMinimize)
 
     # Define binary decision variables
     vars = [pl.LpVariable(f"x{i}", cat=pl.LpBinary) for i in range(n)]
@@ -31,7 +30,6 @@ def mostBuildings(costs, budget):
     prob += pl.lpDot(costs, vars) <= budget
 
     # problem to maximize - number of buildings + incentive for best
-    # prob += pl.lpSum(vars)  
     prob += pl.lpSum(total_buildings) + pl.lpSum(best_preference_bonus)
 
     prob.solve(pl.PULP_CBC_CMD(msg=False))
