@@ -13,7 +13,5 @@ def add_columns(df):
             lambda row: df_current.loc[row['Dorm Name'], item] - row[item], axis=1
         )
 
-    # print(df_current)
-    # print(df)
     # return df
 

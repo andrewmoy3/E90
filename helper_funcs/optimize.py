@@ -18,9 +18,11 @@ def optimize(costs, objective, budget, maximize=False):
 
     # better, best are mutually exclusive
     for i in range(0, n, 2):
-        prob += vars[i] + vars[i+1] <= 1
+        x_better = vars[i]
+        x_best = vars[i + 1]
+        prob += x_better + x_best <= 1
 
-    prob += pl.lpDot(objective, vars)
+    prob += pl.lpDot(objective, vars) 
 
     prob.solve(pl.PULP_CBC_CMD(msg=False))
     output = [v.value() for v in vars]
